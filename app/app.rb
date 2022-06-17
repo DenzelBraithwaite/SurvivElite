@@ -2,20 +2,30 @@ require 'colorize'
 
 require_relative 'router'
 require_relative 'controllers/parent_controller'
-require_relative 'controllers/fighter_controller'
-require_relative 'repos/fighter_repo'
-require_relative 'views/fighter_view'
+require_relative 'controllers/survivor_controller'
+require_relative 'controllers/menu_controller'
+require_relative 'repos/survivor_repo'
+require_relative 'views/survivor_view'
 
-# Fighter repo
-fighter_repo = FighterRepo.new
+# Survivor repository
+survivor_repo = SurvivorRepo.new
 
-# Fighter view
-fighter_view = FighterView.new
+# Player (survivor)
+player = survivor_repo.survivors.first
 
-# Fighter controller
-fighter_controller = FighterController.new(fighter_repo, fighter_view)
+# Survivor view
+survivor_view = SurvivorView.new
+
+# parent controller
+parent_controller = ParentController.new(player)
+
+# Survivor controller
+survivor_controller = SurvivorController.new(survivor_repo, survivor_view)
+
+# Menu controller
+menu_controller = MenuController.new(survivor_repo, survivor_view)
 
 # Main router
-router = Router.new(fighter_controller)
+router = Router.new(survivor_controller)
 
 router.run
