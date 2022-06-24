@@ -1,4 +1,6 @@
 class Food
+  attr_reader :hunger, :thirst, :energy, :health
+
   def initialize(attributes = {})
     @hunger = attributes[hunger]
     @thirst = attributes[thirst]

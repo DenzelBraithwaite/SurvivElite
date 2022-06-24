@@ -1,15 +1,17 @@
 class SurvivorController < ParentController
-  def initialize(repo, view)
-    super(@player)
+  def initialize(player, repo, view)
+    @player = player
     @repo = repo
     @view = view
   end
 
   # Starts game
   def run
+    p @player
+      sleep(1)
     @running = true
-    clear_screen
-    @view.intro
+    clear
+    @view.intro(@player)
     while @running
       puts "running"
       sleep(1)

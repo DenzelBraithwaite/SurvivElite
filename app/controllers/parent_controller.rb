@@ -1,8 +1,13 @@
 class ParentController
   attr_accessor :player
 
-  def initialize(player)
-    @player = player
+  # Clear terminal screen regardless of OS
+  def clear
+    if Gem.win_platform?
+      system 'cls'
+    else
+      system 'clear'
+    end
   end
 
   # Custom method to capitalize a word
@@ -65,15 +70,6 @@ class ParentController
   def line(time = 0, lines = 1)
     lines.times { puts "" }
     sleep(time.to_f)
-  end
-
-  # Clear terminal screen regardless of OS
-  def clear
-    if Gem.win_platform?
-      system 'cls'
-    else
-      system 'clear'
-    end
   end
 
   # Simple blinking prompt, continues when user enters anything

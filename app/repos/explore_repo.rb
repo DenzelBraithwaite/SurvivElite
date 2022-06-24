@@ -1,4 +1,4 @@
-require_relative '../models/labyrinth_room'
+require_relative '../models/explore_room'
 
 class LabyrinthRepo
   attr_reader :rooms

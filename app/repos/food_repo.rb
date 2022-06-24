@@ -1,7 +1,7 @@
 require_relative '../models/food'
 
 class FoodRepo
-  attr_accessor :food
+  attr_accessor :reader
 
   def initialize(attributes = {})
     # List of available foods

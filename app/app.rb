@@ -1,31 +1,54 @@
+# Gems
 require 'colorize'
 
-require_relative 'router'
+# Controllers
 require_relative 'controllers/parent_controller'
+require_relative 'controllers/main_controller'
 require_relative 'controllers/survivor_controller'
-require_relative 'controllers/menu_controller'
+require_relative 'controllers/food_controller'
+# require_relative 'controllers/explore_controller'
+
+# Models
+require_relative 'models/survivor'
+require_relative 'models/food'
+# require_relative 'models/explore_room'
+
+# Repos
 require_relative 'repos/survivor_repo'
+require_relative 'repos/food_repo'
+require_relative 'repos/explore_repo'
+
+# Views
+require_relative 'views/main_view'
 require_relative 'views/survivor_view'
+require_relative 'views/food_view'
+# require_relative 'views/explore_view'
 
-# Survivor repository
+# Routers
+require_relative 'router'
+
+# Survivor
 survivor_repo = SurvivorRepo.new
-
-# Player (survivor)
 player = survivor_repo.survivors.first
-
-# Survivor view
 survivor_view = SurvivorView.new
+survivor_controller = SurvivorController.new(player, survivor_repo, survivor_view)
 
-# parent controller
-parent_controller = ParentController.new(player)
+# Food
+food_repo = FoodRepo.new
+food_view = FoodView.new
+food_controller = FoodController.new(player, food_repo, food_view)
 
-# Survivor controller
-survivor_controller = SurvivorController.new(survivor_repo, survivor_view)
+# Explore
+# explore_repo = ExploreRepo.new
+# explore_view = ExploreView.new
+# explore_controller = ExploreController.new(player, explore_view)
 
-# Menu controller
-menu_controller = MenuController.new(survivor_repo, survivor_view)
+# parent controller to all other controllers, has many methods to reuse
+parent_controller = ParentController.new
 
-# Main router
+# Main menu
+main_controller = MainController.new(survivor_repo, survivor_view)
+main_view = MainView.new
+
 router = Router.new(survivor_controller)
-
 router.run
