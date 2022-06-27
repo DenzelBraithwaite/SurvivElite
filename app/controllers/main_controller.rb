@@ -1,6 +1,6 @@
 class MainController < ParentController
-  def initialize(player, view)
-    @player = player
+  def initialize(view)
+    super(player)
     @view = view
   end
 end

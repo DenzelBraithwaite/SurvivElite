@@ -1,6 +1,6 @@
 require_relative '../models/explore_room'
 
-class LabyrinthRepo
+class ExploreRepo
   attr_reader :rooms
   attr_accessor :all_hats, :all_robes, :item_room_indexes, :dark_death_rooms
 

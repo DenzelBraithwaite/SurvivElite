@@ -1,4 +1,4 @@
-class FoodController < ParentController
+class BackpackController < ParentController
   def initialize(repo, view)
     super(player)
     @repo = repo

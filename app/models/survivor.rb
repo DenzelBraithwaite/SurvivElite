@@ -1,8 +1,8 @@
 # Defines a survivor and their stats in battle
 class Survivor
-  attr_accessor :name, :health, :strength, :accuracy, :hunger, :thirst, :energy
+  attr_accessor :name, :health, :strength, :accuracy, :hunger, :thirst, :energy, :backpack
 
-  def initialize
+  def initialize(backpack)
     # survivor's name
     @name = "Survivor ##{rand(200..1000)}"
     # How many hitpoints the survivor has until knocked out.
@@ -17,6 +17,8 @@ class Survivor
     @thirst = 100
     # energy stats, 0 = fall asleep
     @energy = 100
+    # Holds all inventory items
+    @backpack = backpack
   end
 
   # Returns true if the survivor is alive

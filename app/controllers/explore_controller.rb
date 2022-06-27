@@ -5,10 +5,10 @@ require_relative '../repo/labyrinth_repo'
 class LabyrinthController < ParentController
   attr_accessor :number_of_saves_used
 
-  def initialize(repo)
+  def initialize(repo, view)
     super(player)
-    @view = LabyrinthView.new
     @repo = repo
+    @view = view
     @new_hat_index = 0
     @new_robe_index = 0
     @center_ingredient_found = false

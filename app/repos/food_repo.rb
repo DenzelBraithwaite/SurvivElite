@@ -1,11 +1,11 @@
 require_relative '../models/food'
 
 class FoodRepo
-  attr_accessor :reader
+  attr_accessor :food_list
 
-  def initialize(attributes = {})
+  def initialize()
     # List of available foods
-    @food = [
+    @food_list = [
       @insect = Food.new(
         hunger: 2,
         thirst: -1,
@@ -35,7 +35,7 @@ class FoodRepo
         thirst: 5,
         energy: 5,
         health: 3
-      ),
+      )
     ]
   end
 end

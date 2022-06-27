@@ -1,12 +1,10 @@
 require_relative '../models/survivor'
 
 class SurvivorRepo
-  attr_reader :survivors
+  attr_writer :survivors
 
   def initialize
     # List of available survivors
-    @survivors = [
-      @survivor = Survivor.new
-    ]
+    @survivors = []
   end
 end

@@ -1,6 +1,10 @@
 class ParentController
   attr_accessor :player
 
+  def initialize(player)
+    @player = player
+  end
+
   # Clear terminal screen regardless of OS
   def clear
     if Gem.win_platform?
