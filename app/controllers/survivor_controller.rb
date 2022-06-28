@@ -1,6 +1,6 @@
 class SurvivorController < ParentController
   def initialize(repo, view)
-    super(player)
+    @survivor = @@survivor
     @repo = repo
     @view = view
   end
@@ -9,11 +9,10 @@ class SurvivorController < ParentController
   def run
     @running = true
     clear
-    @view.intro(@player)
+    @view.intro(@survivor)
     @view.starting_items
     item = gets.chomp.to_i
     while @running
-      p @player.backpack
       continue_prompt
     end
   end

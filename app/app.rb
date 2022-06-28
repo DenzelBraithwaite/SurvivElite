@@ -31,20 +31,20 @@ require_relative 'views/food_view'
 # Routers
 require_relative 'router'
 
-# Backpack
+# Positioned in this order since all controllers inherit from parent_controller, and parent_controller needs survivor
 backpack = Backpack.new
+survivor = Survivor.new(backpack)
+parent_controller = ParentController.new(survivor)
+
+# Backpack
 backpack_repo = BackpackRepo.new
 backpack_view = BackpackView.new
 backpack_controller = BackpackController.new(backpack_repo, backpack_view)
 
 # Survivor
-survivor = Survivor.new(backpack)
 survivor_repo = SurvivorRepo.new
 survivor_view = SurvivorView.new
 survivor_controller = SurvivorController.new(survivor_repo, survivor_view)
-
-# parent controller to all other controllers, has many methods to reuse
-parent_controller = ParentController.new(survivor)
 
 # Food
 food_repo = FoodRepo.new
@@ -60,5 +60,5 @@ food_controller = FoodController.new(food_repo, food_view)
 main_view = MainView.new
 main_controller = MainController.new(main_view)
 
-router = Router.new(survivor, parent_controller, main_controller, backpack_controller, survivor_controller, food_controller)
+router = Router.new(main_controller, backpack_controller, survivor_controller, food_controller)
 router.run

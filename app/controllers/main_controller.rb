@@ -1,6 +1,6 @@
 class MainController < ParentController
   def initialize(view)
-    super(player)
+    @survivor = @@survivor
     @view = view
   end
 end

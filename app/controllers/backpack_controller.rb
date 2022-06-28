@@ -1,6 +1,6 @@
 class BackpackController < ParentController
   def initialize(repo, view)
-    super(player)
+    @survivor = @@survivor
     @repo = repo
     @view = view
   end

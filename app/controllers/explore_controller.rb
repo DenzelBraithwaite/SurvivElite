@@ -6,7 +6,7 @@ class LabyrinthController < ParentController
   attr_accessor :number_of_saves_used
 
   def initialize(repo, view)
-    super(player)
+    @survivor = @@survivor
     @repo = repo
     @view = view
     @new_hat_index = 0

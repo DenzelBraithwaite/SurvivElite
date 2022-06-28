@@ -1,8 +1,8 @@
 class ParentController
-  attr_accessor :player
+  attr_accessor :survivor
 
-  def initialize(player)
-    @player = player
+  def initialize(survivor)
+    @@survivor = survivor
   end
 
   # Clear terminal screen regardless of OS
@@ -100,11 +100,6 @@ class ParentController
     if continue == true
       continue_prompt
     end
-  end
-
-  def gruntilda_says(text)
-    print "Gruntilda> ".yellow
-    slow_dialogue(text, 0.015, false)
   end
 
   def return_key_for_index(index, hash)
