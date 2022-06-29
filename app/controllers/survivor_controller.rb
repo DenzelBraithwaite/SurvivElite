@@ -13,6 +13,10 @@ class SurvivorController < ParentController
     @view.starting_items
     item = gets.chomp.to_i
     while @running
+      p @survivor.backpack
+      p @survivor.backpack.name
+      p @survivor.backpack.max_inventory
+      p @survivor.backpack.food
       continue_prompt
     end
   end

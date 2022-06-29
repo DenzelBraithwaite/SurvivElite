@@ -34,7 +34,7 @@ require_relative 'router'
 # Positioned in this order since all controllers inherit from parent_controller, and parent_controller needs survivor
 backpack = Backpack.new
 survivor = Survivor.new(backpack)
-parent_controller = ParentController.new(survivor)
+ParentController.new(survivor)
 
 # Backpack
 backpack_repo = BackpackRepo.new
