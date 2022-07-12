@@ -1,0 +1,1 @@
+class DayView  < ParentView ;end
