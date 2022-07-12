@@ -1,4 +1,4 @@
-class LabyrinthView < MainView
+class LabyrinthView < ParentView
   attr_reader :area_descriptions, :area_transition_descriptions, :tutorial
 
   def initialize

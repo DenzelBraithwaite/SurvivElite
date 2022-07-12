@@ -1,24 +1,7 @@
 class SurvivorController < ParentController
-  def initialize(repo, view)
-    @survivor = @@survivor
+  def initialize(survivor, view, repo)
+    super(survivor, view)
     @repo = repo
-    @view = view
-  end
-
-  # Starts game
-  def run
-    @running = true
-    clear
-    @view.intro(@survivor)
-    @view.starting_items
-    item = gets.chomp.to_i
-    while @running
-      p @survivor.backpack
-      p @survivor.backpack.name
-      p @survivor.backpack.max_inventory
-      p @survivor.backpack.food
-      continue_prompt
-    end
   end
 
   # Prevents health from going below 0

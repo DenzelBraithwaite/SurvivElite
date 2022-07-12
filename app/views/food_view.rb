@@ -1,1 +1,1 @@
-class FoodView ;end
+class FoodView < ParentView ;end

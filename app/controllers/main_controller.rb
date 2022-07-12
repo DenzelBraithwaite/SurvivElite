@@ -1,6 +1,5 @@
 class MainController < ParentController
-  def initialize(view)
-    @survivor = @@survivor
-    @view = view
+  def initialize(survivor, view)
+    super(survivor, view)
   end
 end

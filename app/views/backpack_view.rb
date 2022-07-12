@@ -1,1 +1,1 @@
-class BackpackView ;end
+class BackpackView < ParentView ;end

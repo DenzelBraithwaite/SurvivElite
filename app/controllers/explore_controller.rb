@@ -5,10 +5,9 @@ require_relative '../repo/labyrinth_repo'
 class LabyrinthController < ParentController
   attr_accessor :number_of_saves_used
 
-  def initialize(repo, view)
-    @survivor = @@survivor
+  def initialize(survivor, ,view, repo)
+    super(survivor, view)
     @repo = repo
-    @view = view
     @new_hat_index = 0
     @new_robe_index = 0
     @center_ingredient_found = false
@@ -22,9 +21,9 @@ class LabyrinthController < ParentController
       @view.labyrinth_main_menu
       print "#{@player.name}#{'> '.yellow}"
       menu_action = gets.chomp.to_i
-      clear
+      @view.clear
       menu_route_action(menu_action)
-      clear
+      @view.clear
     end
   end
 
@@ -41,7 +40,7 @@ class LabyrinthController < ParentController
 
   # Displays dialogue on how to play Billywig
   def tutorial
-    clear
+    @view.clear
     puts @view.title_art.yellow.blink
     puts ''
     slow_dialogue("#{"Gʀᴜɴᴛɪʟᴅᴀ>".light_yellow} #{@view.tutorial}", 0.010, true)
@@ -54,7 +53,7 @@ class LabyrinthController < ParentController
     @current_room = @current_room || @repo.rooms[rand(100..279)] #189 center
 
     while @running
-      clear
+      @view.clear
       @view.press_9_to_quit
       @view.labyrinth_menu_options(@current_room.role, @last_movement)
       @view.current_clothing(@player.current_hat, @player.current_robe)
@@ -303,12 +302,12 @@ class LabyrinthController < ParentController
 
   # Alerts player when a new clothing is found
   def new_item_alert(hat_or_robe, item_name)
-    clear
+    @view.clear
     2.times do
       fill_screen("                                                               Nᴇᴡ #{hat_or_robe}!                                                                                                                                                           ".black.on_yellow, 0.5)
       fill_screen("                                                               Nᴇᴡ #{hat_or_robe}!                                                                                                                                                   ".black.on_light_yellow, 0.5)
     end
-    clear
+    @view.clear
     @view.press_9_to_quit
     @view.labyrinth_menu_options(@current_room.role, @last_movement)
     puts "#{'Cᴜʀʀᴇɴᴛ ʀᴏᴏᴍ:'.yellow} #{define_room}"
@@ -338,7 +337,7 @@ class LabyrinthController < ParentController
     else
       get_direction
     end
-    clear
+    @view.clear
     @view.press_9_to_quit
     puts @view.title_art.yellow
     route_action(@action)
